@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Surprise</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            background-image: url('https://drive.google.com/uc?export=view&id=12-dBNTy7Ca4spXHyKn7YxMveXzxyZdOR');
+            background-size: cover;
+            text-align: center;
+            color: white;
+        }
+        .hidden {
+            display: none;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .button:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" loop>
+        <source src="https://drive.google.com/uc?export=view&id=1241Nm0C98TExpGAVKqyFuJg_zNJsiAdK" type="audio/mpeg">
+    </audio>
+
+    <div id="page1" class="page">
+        <img src="https://drive.google.com/uc?export=view&id=12-dBNTy7Ca4spXHyKn7YxMveXzxyZdOR" alt="Best Girlfriend Award">
+        <p>Presenting to you...</p>
+        <button class="button" onclick="nextPage(2)">Thank You</button>
+        <button class="button" onclick="reject()">Reject</button>
+    </div>
+
+    <!-- GIF Pages -->
+    <div id="page2" class="page hidden">
+        <img src="https://drive.google.com/uc?export=view&id=12G0natUGWNJWiZdA94uWDYqzvK4ItDnX" alt="GIF 1">
+        <p>Sometimes I really wish this could be us cuddling</p>
+        <button class="button" onclick="nextPage(3)">Next</button>
+    </div>
+
+    <div id="page3" class="page hidden">
+        <img src="https://drive.google.com/uc?export=view&id=12OJ0-vY17T_CpT3-LvKQ49YFCsi38qxh" alt="GIF 2">
+        <p>This is the life I imagine with you and would do anything to get us there</p>
+        <button class="button" onclick="nextPage(4)">Next</button>
+    </div>
+
+    <div id="page4" class="page hidden">
+        <img src="https://drive.google.com/uc?export=view&id=12PUF_X8XXB-kic7RE3QPbUKPfEtuyKK8" alt="GIF 3">
+        <p>When I don't hear from you for a whole day</p>
+        <button class="button" onclick="nextPage(5)">Next</button>
+    </div>
+
+    <div id="page5" class="page hidden">
+        <img src="https://drive.google.com/uc?export=view&id=12QuHspT9rYA1XMvjyMDzpOgyxu_CKtyt" alt="GIF 4">
+        <p>When I hear from you</p>
+        <button class="button" onclick="nextPage(6)">Next</button>
+    </div>
+
+    <div id="page6" class="page hidden">
+        <img src="https://drive.google.com/uc?export=view&id=12ZDBLr4MZzMVl53qfBihTJV_26shrWp8" alt="GIF 5">
+        <p>Anyway baby I know you like Tulips but you deserve more. Here are some flowers for you</p>
+        <button class="button" onclick="nextPage('question1')">Next</button>
+    </div>
+
+    <!-- Question Pages -->
+    <div id="question1" class="page hidden">
+        <p>Do you love me?</p>
+        <button class="button" onclick="answerQuestion('yes', 1)">Yes</button>
+        <button class="button" onclick="rejectQuestion()">No</button>
+    </div>
+
+    <div id="question2" class="page hidden">
+        <p>Do you like when we talk sexy?</p>
+        <button class="button" onclick="answerQuestion('yes', 2)">Yes</button>
+        <button class="button" onclick="rejectQuestion()">No</button>
+    </div>
+
+    <div id="eatImage" class="page hidden">
+        <img src="https://drive.google.com/uc?export=view&id=12A-rVFnWsKaiX_1tiheNEtCXKG03Am7k" alt="Eat Image">
+        <p>Are you down to finish what we started that day?</p>
+        <button class="button" onclick="answerQuestion('yes', 3)">Yes</button>
+        <button class="button" onclick="rejectQuestion()">No</button>
+    </div>
+
+    <div id="seriousMessage" class="page hidden">
+        <p>Alright, let's get to the serious questions...</p>
+        <button class="button" onclick="nextPage('question4')">Next</button>
+    </div>
+
+    <div id="question4" class="page hidden">
+        <p>Are you happy in this relationship?</p>
+        <button class="button" onclick="answerQuestion('yes', 4)">Yes</button>
+        <button class="button" onclick="rejectQuestion()">No</button>
+    </div>
+
+    <div id="question5" class="page hidden">
+        <p>Do you actually want us to get married?</p>
+        <button class="button" onclick="answerQuestion('yes', 5)">Yes</button>
+        <button class="button" onclick="rejectQuestion()">No</button>
+    </div>
+
+    <div id="question6" class="page hidden">
+        <p>Would you run away with me if you had the chance?</p>
+        <button class="button" onclick="answerQuestion('yes', 6)">Yes</button>
+        <button class="button" onclick="rejectQuestion()">No</button>
+    </div>
+
+    <div id="finalCard" class="page hidden card">
+        <p>My Love, Happy Anniversary,<br>
+        Today marks one year of us sharing our lives together, and I couldn't be happier. Your love, kindness, and support have made this one year with you seem like eternity.
+        You make every day brighter and more beautiful. I am so grateful for you and the memories we've created. Here's to many more years of love, laughter, and adventure together. 
+        I love you more than words can express.<br>
+        Yours always,<br>Raymond.</p>
+    </div>
+
+    <script>
+        document.getElementById('backgroundMusic').play();
+
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.getElementById(`page${pageNumber}`).classList.remove('hidden');
+        }
+
+        function answerQuestion(answer, questionNumber) {
+            if (questionNumber === 1 && answer === 'yes') {
+                alert("lol, I know you do that's a dumb question");
+                nextPage('question2');
+            } else if (questionNumber === 2 && answer === 'yes') {
+                nextPage('eatImage');
+            } else if (questionNumber === 3 && answer === 'yes') {
+                nextPage('seriousMessage');
+            } else if (questionNumber >= 4 && questionNumber <= 6) {
+                if (answer === 'yes') {
+                    if (questionNumber === 6) {
+                        nextPage('finalCard');
+                    } else {
+                        nextPage(`question${questionNumber + 1}`);
+                    }
+                } else {
+                    alert('Please select Yes to proceed.');
+                }
+            }
+        }
+
+        function rejectQuestion() {
+            alert('Please select Yes to proceed.');
+        }
+
+        function reject() {
+            alert('You can only accept the award!');
+        }
+    </script>
+</body>
+</html>
